@@ -59,7 +59,9 @@ function tcInit(){
 			</div>
 			<div class="col-sm-11">
 				<div id="main">
-					<h1>Welcome!</h1>
+					<ul id="myTab" class="nav nav-tabs">
+						<li><a href="#report" data-toggle="tab">360报表</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -68,6 +70,6 @@ function tcInit(){
 				<p>Footer Text</p>
 			</footer>
 		</div>
-
 	</div>
+	<div id="myTabContent" class="tab-content"><div class="tab-pane fade in active" id="report">report</div></div>
 </body>
