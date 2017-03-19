@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-24 14:17:41 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.tc.vo.impl.TcLog" table="tc_log" catalog="tc" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="operator" type="java.lang.Integer">
+            <column name="operator">
+                <comment>user_id</comment>
+            </column>
+        </property>
+        <property name="ip" type="string">
+            <column name="ip" length="20" />
+        </property>
+        <property name="createTime" type="timestamp">
+            <column name="create_time" length="19" />
+        </property>
+        <property name="cmd" type="string">
+            <column name="cmd" length="250" />
+        </property>
+        <property name="content" type="string">
+            <column name="content" length="2000" />
+        </property>
+    </class>
+</hibernate-mapping>

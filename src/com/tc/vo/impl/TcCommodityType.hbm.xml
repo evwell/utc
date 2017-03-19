@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-2-9 14:02:00 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.tc.vo.impl.TcCommodityType" table="tc_commodity_type" catalog="tc" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="cid" type="java.lang.String">
+            <column name="cid" />
+        </property>
+        <property name="tag" type="string">
+            <column name="tag" length="64">
+                <comment>TC_COMMODITY_TAG.id&#163;&#172;&#182;&#224;&#184;&#246;TAG&#211;&#195;","&#183;&#214;&#184;&#244;</comment>
+            </column>
+        </property>
+        <property name="code" type="string">
+            <column name="code" length="32" />
+        </property>
+        <property name="barCode" type="string">
+            <column name="bar_code" length="32" />
+        </property>
+        <property name="fullName" type="string">
+            <column name="full_name" length="64" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="64" />
+        </property>
+        <property name="standard" type="string">
+            <column name="standard" length="64" />
+        </property>
+        <property name="type1" type="string">
+            <column name="type1" length="64" />
+        </property>
+        <property name="type2" type="string">
+            <column name="type2" length="64" />
+        </property>
+        <property name="type3" type="string">
+            <column name="type3" length="64" />
+        </property>
+        <property name="area" type="string">
+            <column name="area" length="10">
+                <comment>&#202;&#161;&#202;&#208;&#207;&#216;&#188;&#242;&#208;&#180;</comment>
+            </column>
+        </property>
+        <property name="recPrice" type="java.lang.Integer">
+            <column name="rec_price">
+                <comment>&#181;&#165;&#206;&#187;&#183;&#214;</comment>
+            </column>
+        </property>
+        <property name="sallPrice" type="java.lang.Integer">
+            <column name="sall_price">
+                <comment>&#183;&#214;</comment>
+            </column>
+        </property>
+        <property name="margins" type="big_decimal">
+            <column name="margins" precision="4">
+                <comment>%</comment>
+            </column>
+        </property>
+        <property name="qualityGuarantee" type="java.lang.Integer">
+            <column name="quality_guarantee">
+                <comment>&#204;&#236;</comment>
+            </column>
+        </property>
+        <property name="unit" type="java.lang.Byte">
+            <column name="unit">
+                <comment>tc_sys_para.para_key='COMMODITY_UNIT'</comment>
+            </column>
+        </property>
+        <property name="pinyin" type="string">
+            <column name="pinyin" length="10" />
+        </property>
+        <property name="comment" type="string">
+            <column name="comment" length="64" />
+        </property>
+        <property name="picture" type="binary">
+            <column name="picture" />
+        </property>
+        <property name="createBy" type="java.lang.Long">
+            <column name="create_by" length="32" />
+        </property>
+        <property name="createTime" type="java.sql.Timestamp">
+            <column name="create_time" length="10" />
+        </property>
+        <property name="modifyBy" type="java.lang.Long">
+            <column name="modify_by" length="32" />
+        </property>
+        <property name="modifyTime" type="java.sql.Timestamp">
+            <column name="modify_time" length="10" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status">
+                <comment>tc_sys_para.para_key='COMMODITY_STATUS'</comment>
+            </column>
+        </property>
+        <property name="total" type="java.lang.Integer">
+            <column name="total"></column>
+        </property>
+		<many-to-one column="kind_id" class="com.tc.vo.impl.TcCommodityKind" name="commodityKind" cascade="none" fetch="join" lazy="proxy"></many-to-one>
+		<many-to-one column="trader_id" class="com.tc.vo.impl.TcTrader" name="trader" cascade="none" fetch="join" lazy="proxy"></many-to-one>
+    </class>
+    
+    <query name="findByKindIdQuery">
+		<![CDATA[ 
+		from TcCommodityType a left join fetch a.commodityKind b where b.id=?
+    	]]>
+	</query>
+</hibernate-mapping>

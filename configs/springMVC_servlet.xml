@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	
+	
+    <context:component-scan base-package="com.tc.controller"/>
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<ref bean="stringConverter"/>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+<mvc:interceptors>
+    <mvc:interceptor>
+        <mvc:mapping path="/**" />
+        <bean class="com.tc.core.interceptor.SecurityInterceptor">
+            <property name="excludedUrls">
+                <list>
+                    <value>/auth/init</value>
+                    <value>/auth/login</value>
+                    <value>/auth/register</value>
+                    <value>/auth/delete</value>
+                </list>
+            </property>
+        </bean>
+    </mvc:interceptor>
+</mvc:interceptors>
+	
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+	
+	<bean id="stringConverter" class="org.springframework.http.converter.StringHttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/plain;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="objectMapper">
+			<bean class="com.tc.core.util.ObjectMappingCustomer" />
+		</property>
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html; charset=UTF-8</value>
+				<value>application/json;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="synchronizeOnSession" value="true"/>
+		<property name="messageConverters">
+			<list>
+				<ref bean="stringConverter"/>
+				<ref bean="jsonConverter" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="/WEB-INF/s/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+
+	<!-- 上传 需要使用到的配置 
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="1046666000" />
+	</bean>-->
+
+	<!-- 顶层控制器 -->
+	<bean id="basicController" class="com.tc.core.frame.controller.BasicController" abstract="true">
+	</bean>
+	
+	<!-- 控制器一般实现 -->
+	<bean id="commonController" class="com.tc.core.frame.controller.CommonController">
+		<property name="services">
+			<map>
+				<entry key="log" value-ref="logService" />
+				<entry key="trader" value-ref="traderService" />
+				<entry key="stock" value-ref="stockService" />
+				<entry key="inventory" value-ref="inventoryService" />
+				<entry key="commodityUnit" value-ref="commodityUnitService" />
+				<entry key="commodityTag" value-ref="commodityTagService" />
+				<entry key="commodityKind" value-ref="commodityKindService" />
+				<entry key="commodityType" value-ref="commodityTypeService" />
+				<entry key="menu" value-ref="menuService" />
+			</map>
+		</property>
+	</bean>
+	
+	<!-- 系统 -->
+	<bean id="systemController" class="com.tc.core.frame.controller.SystemController"></bean>
+	
+	<!-- 系统 -->
+	<bean id="authenticationController" class="com.tc.controller.sys.AuthenticationController">
+		<property name="service">
+			<ref bean="loginService" />
+		</property>
+	</bean>
+	
+	<!-- 菜单 -->
+	<bean id="menuController" class="com.tc.controller.sys.MenuController">
+		<property name="service">
+			<ref bean="menuService" />
+		</property>
+	</bean>
+	
+	<!-- 商品分类管理 -->
+	<bean id="commodityKindController" class="com.tc.controller.config.CommodityKindController">
+		<property name="service">
+			<ref bean="commodityKindService" />
+		</property>
+	</bean>
+	
+	<!-- 商品类型管理 -->
+	<bean id="commodityTypeController" class="com.tc.controller.config.CommodityTypeController">
+		<property name="service">
+			<ref bean="commodityTypeService" />
+		</property>
+	</bean>
+	
+	<!-- 商品分类管理 -->
+	<bean id="traderController" class="com.tc.controller.config.TraderController">
+		<property name="service">
+			<ref bean="traderService" />
+		</property>
+	</bean>
+</beans>

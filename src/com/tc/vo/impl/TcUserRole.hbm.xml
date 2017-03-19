@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-13 23:35:30 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+	<class name="com.tc.vo.impl.TcUserRole" table="tc_user_role" catalog="tc"
+		optimistic-lock="version">
+		<id name="id" type="java.lang.Long">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="userId" type="int">
+			<column name="user_id" />
+		</property>
+		<property name="roleId" type="int">
+			<column name="role_id" />
+		</property>
+		<property name="cid" type="string">
+			<column name="cid" />
+		</property>
+		<property name="status" type="java.lang.Byte">
+			<column name="status" />
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+ 
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/tc</property>
+        <property name="connection.driverClass">com.mysql.jdbc.Driver</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">1234</property>
+        <property name="jdbc.batch_size">20</property>
+        <property name="connection.autocommit">true</property>
+ 
+        <!-- 是否显示sql   -->
+  		<property name="show_sql">true</property>
+  		<!-- 是否格式化sql -->
+  		<property name="format_sql">true</property>
+  		<!-- 是否使用注释  -->
+  		<property name="use_sql_comments">true</property>
+        <property name="connection.useUnicode">true</property>
+        <property name="connection.characterEncoding">UTF-8</property>
+ 
+        
+        <mapping resource="com/tc/vo/impl/TcSysPara.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcUser.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcUserRole.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcMenu.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcLog.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcTrader.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcStock.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcInventory.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcCommodityKind.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcCommodityType.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcCommodityTag.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcCommodityUnit.hbm.xml" />
+        
+        <!-- 
+        <mapping resource="com/tc/vo/impl/TcTrader.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcInOrders.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcSysPara.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcCommodityTag.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcInOrderDetails.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcIndex.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcBankInfo.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcAccountBook.hbm.xml" />
+        <mapping resource="com/tc/vo/impl/TcAccount.hbm.xml" />
+        -->
+    </session-factory>
+</hibernate-configuration>
+

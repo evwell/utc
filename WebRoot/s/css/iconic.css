@@ -1,0 +1,250 @@
+@font-face {
+	font-family: IconicStroke;
+	src: local("IconicStroke"), url(fonts/iconic/iconic_stroke.svg#iconic) format("svg"), url(fonts/iconic/iconic_stroke.otf) format("opentype");
+}
+.iconic {
+	color: inherit; line-height: 20px; font-family: "IconicStroke"; font-size: 38px; vertical-align: middle;
+}
+a.iconic:hover {
+	color: inherit;
+}
+.home.iconic::before {
+	content: "!";
+}
+.at.iconic::before {
+	content: "@";
+}
+.quote.iconic::before {
+	content: """;
+}
+.quote-alt.iconic::before {
+	content: "'";
+}
+.arrow-up.iconic::before {
+	content: "3";
+}
+.arrow-right.iconic::before {
+	content: "4";
+}
+.arrow-bottom.iconic::before {
+	content: "5";
+}
+.arrow-left.iconic::before {
+	content: "6";
+}
+.arrow-up-alt.iconic::before {
+	content: "#";
+}
+.arrow-right-alt.iconic::before {
+	content: "$";
+}
+.arrow-bottom-alt.iconic::before {
+	content: "%";
+}
+.arrow-left-alt.iconic::before {
+	content: "^";
+}
+.move.iconic::before {
+	content: "9";
+}
+.move-vertical.iconic::before {
+	content: "8";
+}
+.move-horizontal.iconic::before {
+	content: "7";
+}
+.move-alt.iconic::before {
+	content: "(";
+}
+.move-vertical-alt.iconic::before {
+	content: "*";
+}
+.move-horizontal-alt.iconic::before {
+	content: "&";
+}
+.cursor.iconic::before {
+	content: ")";
+}
+.plus.iconic::before {
+	content: "+";
+}
+.plus-alt.iconic::before {
+	content: "=";
+}
+.minus.iconic::before {
+	content: "-";
+}
+.minus-alt.iconic::before {
+	content: "_";
+}
+.new-window.iconic::before {
+	content: "1";
+}
+.dial.iconic::before {
+	content: "2";
+}
+.lightbulb.iconic::before {
+	content: "0";
+}
+.link.iconic::before {
+	content: "/";
+}
+.image.iconic::before {
+	content: "?";
+}
+.article.iconic::before {
+	content: ">";
+}
+.read-more.iconic::before {
+	content: ".";
+}
+.headphones.iconic::before {
+	content: ",";
+}
+.equalizer.iconic::before {
+	content: "<";
+}
+.fullscreen.iconic::before {
+	content: ":";
+}
+.exit-fullscreen.iconic::before {
+	content: ";";
+}
+.spin.iconic::before {
+	content: "[";
+}
+.spin-alt.iconic::before {
+	content: "{";
+}
+.moon.iconic::before {
+	content: "]";
+}
+.sun.iconic::before {
+	content: "}";
+}
+.map-pin.iconic::before {
+	content: "\\";
+}
+.pin.iconic::before {
+	content: "|";
+}
+.eyedropper.iconic::before {
+	content: "~";
+}
+.denied.iconic::before {
+	content: "`";
+}
+.calendar.iconic::before {
+	content: "a";
+}
+.calendar-alt.iconic::before {
+	content: "A";
+}
+.bolt.iconic::before {
+	content: "b";
+}
+.clock.iconic::before {
+	content: "c";
+}
+.document.iconic::before {
+	content: "d";
+}
+.book.iconic::before {
+	content: "e";
+}
+.book-alt.iconic::before {
+	content: "E";
+}
+.magnifying-glass.iconic::before {
+	content: "f";
+}
+.tag.iconic::before {
+	content: "g";
+}
+.heart.iconic::before {
+	content: "h";
+}
+.info.iconic::before {
+	content: "i";
+}
+.chat.iconic::before {
+	content: "j";
+}
+.chat-alt.iconic::before {
+	content: "J";
+}
+.key.iconic::before {
+	content: "k";
+}
+.unlocked.iconic::before {
+	content: "l";
+}
+.locked.iconic::before {
+	content: "L";
+}
+.mail.iconic::before {
+	content: "m";
+}
+.mail-alt.iconic::before {
+	content: "M";
+}
+.phone.iconic::before {
+	content: "n";
+}
+.box.iconic::before {
+	content: "o";
+}
+.pencil.iconic::before {
+	content: "p";
+}
+.pencil-alt.iconic::before {
+	content: "P";
+}
+.comment.iconic::before {
+	content: "q";
+}
+.comment-alt.iconic::before {
+	content: "Q";
+}
+.rss.iconic::before {
+	content: "r";
+}
+.star.iconic::before {
+	content: "s";
+}
+.trash.iconic::before {
+	content: "t";
+}
+.user.iconic::before {
+	content: "u";
+}
+.volume.iconic::before {
+	content: "v";
+}
+.mute.iconic::before {
+	content: "V";
+}
+.cog.iconic::before {
+	content: "w";
+}
+.cog-alt.iconic::before {
+	content: "W";
+}
+.x.iconic::before {
+	content: "x";
+}
+.x-alt.iconic::before {
+	content: "X";
+}
+.check.iconic::before {
+	content: "y";
+}
+.check-alt.iconic::before {
+	content: "Y";
+}
+.beaker.iconic::before {
+	content: "z";
+}
+.beaker-alt.iconic::before {
+	content: "Z";
+}

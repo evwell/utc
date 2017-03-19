@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-2-7 13:30:06 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.tc.vo.impl.TcCommodityUnit" table="tc_commodity_unit" catalog="tc" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="commodityTypeId" type="java.lang.Integer">
+            <column name="commodity_type_id">
+                <comment>commodity_type_id</comment>
+            </column>
+        </property>
+        <property name="unit" type="string">
+            <column name="unit" length="10" />
+        </property>
+        <property name="next" type="java.lang.Integer">
+            <column name="next">
+                <comment>tc_commodity_unit.id</comment>
+            </column>
+        </property>
+        <property name="multiplier" type="java.lang.Integer">
+            <column name="multiplier" />
+        </property>
+        <property name="level" type="java.lang.Byte">
+            <column name="level" />
+        </property>
+    </class>
+</hibernate-mapping>

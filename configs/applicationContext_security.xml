@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="  
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.1.xsd">
+
+	<security:http pattern="/s/**" security="none"/>
+	<security:http pattern="/auth/init" security="none"/>
+	<security:http use-expressions="true" authentication-manager-ref="AuthManager">
+		<security:intercept-url pattern="/auth/**" access="permitAll()"/>
+		<security:intercept-url pattern="/**" access="isAuthenticated()" />
+
+		<security:form-login login-page="/auth/init"
+			default-target-url="/auth/login" login-processing-url="/auth/login"
+			authentication-failure-url="/auth/" password-parameter="password"
+			username-parameter="userName" />
+
+		<security:logout invalidate-session="true" logout-success-url="/auth/logout" logout-url="/auth/welcome" />
+	</security:http>
+
+	<security:authentication-manager id="AuthManager">
+		<security:authentication-provider ref="daoAuthProvider"/>
+	</security:authentication-manager>
+
+	<bean id="daoAuthProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService" ref="myUserAuthService" /> <!-- From business. We implement it. -->
+		<property name="passwordEncoder" ref="passwordEncoder" />
+	</bean>
+
+	<bean id="myUserAuthService" class="com.tc.core.security.UserService">
+		<property name="dao" ref="userinfoDAO"/>
+	</bean>
+
+	<bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<constructor-arg name="strength" value="10"/>
+	</bean>
+	
+	<bean id="authenticationProcessingFilterEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <constructor-arg name="loginFormUrl" value="/auth/init" />
+    </bean>
+</beans>

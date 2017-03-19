@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<!-- 交易对象管理 -->
+	<bean id="traderService" class="com.tc.service.config.TraderService">
+		<property name="dao">
+			<ref bean="traderDao" />
+		</property>
+	</bean>
+	<bean id="traderDao" class="com.tc.dao.config.TraderDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- 商品标签管理 -->
+	<bean id="commodityTagService" class="com.tc.service.config.CommodityTagService">
+		<property name="dao">
+			<ref bean="commodityTagDao" />
+		</property>
+	</bean>
+	<bean id="commodityTagDao" class="com.tc.dao.config.CommodityTagDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<!-- 商品分类管理 -->
+	<bean id="commodityKindService" class="com.tc.service.config.CommodityKindService">
+		<property name="dao">
+			<ref bean="commodityKindDao" />
+		</property>
+	</bean>
+	<bean id="commodityKindDao" class="com.tc.dao.config.CommodityKindDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- 商品类型管理 -->
+	<bean id="commodityTypeService" class="com.tc.service.config.CommodityTypeService">
+		<property name="dao">
+			<ref bean="commodityTypeDao" />
+		</property>
+	</bean>
+	<bean id="commodityTypeDao" class="com.tc.dao.config.CommodityTypeDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<!-- 商品清单 -->
+	<bean id="inventoryService" class="com.tc.service.config.InventoryService">
+		<property name="dao">
+			<ref bean="inventoryDao" />
+		</property>
+	</bean>
+	<bean id="inventoryDao" class="com.tc.dao.config.InventoryDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<!-- 商品单位管理 -->
+	<bean id="commodityUnitService" class="com.tc.service.config.CommodityUnitService">
+		<property name="dao">
+			<ref bean="commodityUnitDao" />
+		</property>
+	</bean>
+	<bean id="commodityUnitDao" class="com.tc.dao.config.CommodityUnitDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<!-- 仓库管理 -->
+	<bean id="stockService" class="com.tc.service.config.StockService">
+		<property name="dao">
+			<ref bean="stockDao" />
+		</property>
+	</bean>
+	<bean id="stockDao" class="com.tc.dao.config.StockDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<!-- 系统登陆 -->
+	<bean id="loginService" class="com.tc.service.sys.SysUserInfoService">
+		<property name="dao">
+			<ref bean="userinfoDAO" />
+		</property>
+	</bean>
+	<bean id="userinfoDAO" class="com.tc.dao.sys.SysUserInfoDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- 菜单 -->
+	<bean id="menuService" class="com.tc.service.sys.MenuService">
+		<property name="dao">
+			<ref bean="menuDAO" />
+		</property>
+	</bean>
+	<bean id="menuDAO" class="com.tc.dao.sys.MenuDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- 日志 -->
+
+	<bean id="logService" class="com.tc.service.sys.LogService">
+		<property name="dao">
+			<ref bean="logDAO" />
+		</property>
+	</bean>
+	<bean id="logDAO" class="com.tc.dao.sys.LogDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+</beans>

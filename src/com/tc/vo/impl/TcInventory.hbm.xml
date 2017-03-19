@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-2-3 12:28:52 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.tc.vo.impl.TcInventory" table="tc_inventory" catalog="tc" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="cid" type="string">
+            <column name="cid" length="8" />
+        </property>
+        <property name="inTime" type="timestamp">
+            <column name="in_time" length="19" not-null="true" />
+        </property>
+        <property name="outTime" type="timestamp">
+            <column name="out_time" length="19" not-null="true" />
+        </property>
+        <property name="number" type="java.lang.Integer">
+            <column name="number" />
+        </property>
+        <property name="status" type="java.lang.Byte">
+            <column name="status">
+                <comment>1-&#191;&#201;&#207;&#250;&#202;&#219;,2-&#203;&#240;&#187;&#181;&#161;&#162;&#185;&#253;&#198;&#218;</comment>
+            </column>
+        </property>
+        
+        <many-to-one column="commodity_type_id" class="com.tc.vo.impl.TcCommodityType" name="commodityType" cascade="none" fetch="join" lazy="proxy"></many-to-one>
+        <many-to-one column="stock_id" class="com.tc.vo.impl.TcStock" name="stock" cascade="none" fetch="join" lazy="proxy"></many-to-one>
+    </class>
+</hibernate-mapping>
