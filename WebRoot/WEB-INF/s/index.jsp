@@ -1,123 +1,75 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="_header.jsp"%>
-<html lang="zh-CN">
+
+
 <head>
-<title>TC</title>
-
-<style type="text/css">
-html, body {
-	height: 100%; /*设置html和body的width和height为100%，可使全屏生效*/
-	width: 100%;
-	margin: 0px; /*设置上下左右的相对位置为0，可避免超出范围出现滚动条*/
-}
-
-div {
-	margin: 0px;
-}
-
-#top {
-	height: 100px;
-	position: absolute;
-	z-index: 10;
-	width: 100%;
-	top: 0px;
-	overflow: no;
-	z-index: 10;
-	width: 100%;
-	top: 0px;
-	overflow: no;
-}
-
-#left {
-	position: absolute;
-	width: 200px;
-	height: 100%;
-	z-index: 5;
-	overflow: auto;
-}
-
-#nav {
-	margin-top: 100px;
-}
-
-#right {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	overflow: auto;
-}
-
-#show {
-	margin: 100px 0px 0px 200px;
-}
-
-#footer {
-	height: 30px;
-	position: absolute;
-	width: 100%;
-	bottom: 0px;
-	overflow: no;
-}
-
-ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-}
-
-a:link, a:visited {
-	display: block;
-	width: 120px;
-	font-weight: bold;
-	color: #FFFFFF;
-	background-color: #bebebe;
-	text-align: center;
-	padding: 4px;
-	text-decoration: none;
-	text-transform: uppercase;
-}
-
-a:hover, a:active {
-	background-color: #cc0000;
-}
-</style>
-
+<title>STC</title>
 <script type="text/javascript">
-	//重置页面高度
-	function resize() {
-		$("div.secondrightFrame").css("height", parent.computeIFrame() - 60);
-	}
+$(window).resize(function() {
+	tcInit();
+});
+
+function tcInit(){
+	$("#top").css("height", "80px");
+	$("#mid").css("height", $(window).height()-110);
+	$("#foot").css("height", "30px");
+}
+
+	$(document).ready(function() {
+		tcInit();
+		$.ajax({
+			type : "POST",
+			url : "menu/list",
+			success : function(data) {
+				var menu = menuAccordion(data);
+				$("#menuAccordion").append(menu);
+			},
+		});
+	});
 </script>
 </head>
-<body>
 
-	<div id="top"></div>
-	<div id="left">
-		<div id="nav">
-			<ul>
-				<s:iterator id='menu1' value='menuList' status='st'>
-					<s:if test="#menu1.level==1">
-						<li id='menu-<s:property value="#menu1.id"/>'><ul>
-								<s:property value="#menu1.name" />
-								<s:iterator id='menu2' value='menuList' status='s2'>
-									<s:if test="#menu2.parnetId==#menu1.id">
-										<li><a href='<s:property value="#menu2.url" />'
-											title='<s:property value="#menu2.name" />'><s:property
-													value="#menu2.name" /></a></li>
-									</s:if>
-								</s:iterator>
-							</ul></li>
-					</s:if>
-				</s:iterator>
-			</ul>
+<body>
+	<div id="welcome">
+		<div id="top">
+			<nav class="navbar navbar-default navbar-static-top" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed"
+							data-toggle="collapse" data-target="#navbar"
+							aria-expanded="false" aria-controls="navbar">
+							<span class="sr-only">Toggle navigation</span> 
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="auth/init">Home</a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul id="menuUL" class="nav navbar-nav">
+						</ul>
+					</div>
+					<!--/.nav-collapse -->
+				</div>
+			</nav>
+		</div>
+		<div id="mid">
+			<div class="col-sm-1">
+				<div id="menuAccordion"></div>
+			</div>
+			<div class="col-sm-11">
+				<div id="main">
+					<ul id="myTab" class="nav nav-pills">
+						<li><a href="#report" data-toggle="tab">360报表</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="foot">
+			<footer class="footer">
+				<p>Footer Text</p>
+			</footer>
 		</div>
 	</div>
-	<div id="right">
-		<div id="show">ri</div>
-	</div>
-	<div id="footer">footer</div>
-
+	<div id="myTabContent" class="tab-content"><div class="tab-pane fade in active" id="report"><p>菜鸟教程是一个提供最新的web技术站点，本站免费提供了建站相关的技术文档，帮助广大web技术爱好者快速入门并建立自己的网站。菜鸟先飞早入行——学的不仅是技术，更是梦想。</p></div></div>
 </body>
-</html>

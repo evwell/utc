@@ -46,7 +46,7 @@ public class AuthenticationController extends BasicController {
 		if (request.getSession() != null && request.getSession().getAttribute(USERINFO) != null) {
 			logger.debug("Has beeb login @ "
 					+ ((TcUser) (request.getSession().getAttribute(USERINFO))).getUserName());
-			returnToken = new ModelAndView("welcome");
+			returnToken = new ModelAndView("index");
 		}
 		returnToken.addObject("msg", "忽忘初心");
 		return returnToken;
