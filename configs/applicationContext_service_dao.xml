@@ -122,4 +122,17 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	
+	<!-- 财务 -->
+
+	<bean id="accountJournalService" class="com.tc.service.finance.AccountJournalService">
+		<property name="dao">
+			<ref bean="accountJournalDAO" />
+		</property>
+	</bean>
+	<bean id="accountJournalDAO" class="com.tc.dao.finance.AccountJournalDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
 </beans>
