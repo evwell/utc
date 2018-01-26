@@ -9,11 +9,10 @@ public class TcAccountJournal extends AbstractVO {
 	
 	private Long id;
 	private Date deliverDate;
-	private 
+	private String name;
 	
-	public Serializable getId() {
-		// TODO Auto-generated method stub
-		return null;
+	public Long getId(){
+		return this.id;
 	}
 
 }
